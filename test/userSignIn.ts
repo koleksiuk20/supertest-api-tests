@@ -12,4 +12,13 @@ describe('POST /users/signin', () => {
     expect(response.body.username).to.eq('admin')
     expect(response.body.firstName).to.eq('Jan')
   })
+
+  it('should return 422 when invalid username and/or password', async () => {
+    const response = await apiServer
+      .post('/users/signin')
+      .send({ username: 'invalid username', password: 'invalid password' })
+
+    expect(response.status).to.eq(422)
+    expect(response.body.message).to.eq('Invalid username/password supplied')
+  })
 })
