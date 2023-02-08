@@ -1,7 +1,8 @@
 import * as request from 'supertest'
 
-// baseUrl
+// host
 export const apiServer = request('http://localhost:4001')
 
 // paths
-export const usersSignInPath = '/users/signin'
+export const signInPath = '/users/signin'
+export const signUpPath = '/users/signup'
