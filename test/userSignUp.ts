@@ -29,8 +29,6 @@ describe('POST /users/signup', () => {
   })
 
   it('should return 400 when signup up with too short username or password', async () => {
-    const newClientUser = getClientUser()
-
     const response = await apiServer
       .post(signUpPath)
       .send({
