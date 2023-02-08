@@ -1,10 +1,11 @@
 import { expect } from "chai"
 
+import { registerUser } from "../helpers/registerUser"
+import { signInUser } from "../helpers/signInUser"
+
 import { apiServer } from "../utils/config"
 import { getAdminUser, getClientUser } from "../utils/user"
 
-import { registerUser } from "../helpers/registerUser"
-import { signInUser } from "../helpers/signInUser"
 
 describe('GET /users', () => {
   it('should return 200 for signed in admin user', async () => {
