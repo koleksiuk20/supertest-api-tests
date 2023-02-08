@@ -17,6 +17,17 @@ describe('POST /users/signup', () => {
     expect(response.body.token).to.not.be.undefined
   })
 
+  it('should return 201 created when signing up as admin user', async () => {
+    const newAdminUser = getAdminUser()
+
+    const response = await apiServer
+      .post(signUpPath)
+      .send(newAdminUser)
+
+    expect(response.status).to.eq(201)
+    expect(response.body.token).to.not.be.undefined
+  })
+
   it('should return 400 when signup up with too short username or password', async () => {
     const newClientUser = getClientUser()
 
