@@ -1,9 +1,10 @@
 import { expect } from "chai"
 
+import { registerUser } from "../helpers/registerUser"
+
 import { apiServer, signUpPath } from "../utils/config"
 import { getAdminUser, getClientUser } from '../utils/user'
 
-import { registerUser } from "../helpers/registerUser"
 
 describe('POST /users/signup', () => {
   it('should return 201 created when signing up as client user', async () => {
@@ -28,7 +29,7 @@ describe('POST /users/signup', () => {
     expect(response.body.token).to.not.be.undefined
   })
 
-  it('should return 400 when signup up with too short username or password', async () => {
+  it('should return 400 when signing up with too short username or password', async () => {
     const response = await apiServer
       .post(signUpPath)
       .send({
@@ -44,7 +45,7 @@ describe('POST /users/signup', () => {
     })
   })
 
-  it('should return 422 when signup up with username already taken', async () => {
+  it('should return 422 when signing up with username already taken', async () => {
     const newClientUser = getClientUser()
     await registerUser(newClientUser)
 
